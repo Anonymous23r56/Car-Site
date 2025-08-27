@@ -1,0 +1,493 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FEMIZOEXCEL Global Ventures</title>
+    <style>
+        .fade-in {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: opacity 0.8s ease, transform 0.8s ease;
+        }
+        .fade-in.visible {
+            opacity: 1;
+            transform: none;
+        }
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0; 
+            background: #f7f7f7; 
+        }
+        nav a:hover {
+            color: #e63946;
+            text-decoration: underline;
+            transition: color 0.2s;
+        }
+        .cta-btn:hover, .contact-form button:hover {
+            background: #b71c1c;
+            color: #fff;
+            box-shadow: 0 2px 8px rgba(230,57,70,0.2);
+            transition: background 0.2s, box-shadow 0.2s;
+        }
+        .car-card:hover {
+            box-shadow: 0 4px 16px rgba(60,60,60,0.15);
+            transform: translateY(-4px) scale(1.02);
+            transition: box-shadow 0.2s, transform 0.2s;
+        }
+        header {
+             background: hsl(0, 0%, 13%); 
+             color: #fff;
+             padding: 20px 0; 
+            }
+        .navbar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            max-width: 1100px;
+            margin: 0 auto;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            background: hsl(0, 0%, 13%);
+            box-shadow: 0 2px 8px rgba(0,0,0,0.07);
+        }
+        .logo {
+             font-size: 2rem;
+             font-weight: bold; 
+             letter-spacing: 2px;
+             }
+        nav a { 
+            color: #fff; 
+            text-decoration: none;
+            margin: 0 15px;
+            font-size: 1rem; 
+            text-decoration: none;
+            }
+
+            .service-card:hover {
+            box-shadow: 0 4px 16px rgba(230,57,70,0.15);
+            transform: translateY(-4px) scale(1.03);
+            transition: box-shadow 0.2s, transform 0.2s;
+        }
+        .testimonial:hover {
+            box-shadow: 0 4px 16px rgba(60,60,60,0.15);
+            transform: translateY(-4px) scale(1.03);
+            background: #fffbe6;
+            transition: box-shadow 0.2s, transform 0.2s, background 0.2s;
+        }
+
+        
+        a {
+            text-decoration: none;
+        }
+        .cta-btn {
+             background: #e63946; 
+             color: #fff;
+             padding: 10px 20px;
+             border: none;
+             border-radius: 4px; 
+             cursor: pointer;
+             font-weight: bold;
+             }
+        .hero { 
+            background: linear-gradient(rgba(60,60,60,0.7), rgba(60,60,60,0.7)), url('/resources/Gemini_Generated_Image_wlewkswlewkswlew.png') center/cover no-repeat;
+            color: #fff;
+            text-align: center;
+            padding: 100px 20px 80px 20px;
+        }
+        .hero h1 {
+             font-size: 3rem;
+             margin-bottom: 10px;
+             }
+        .hero p {
+             font-size: 1.3rem; 
+             margin-bottom: 20px;
+             }
+        .hero .cta-btn {
+             font-size: 1.2rem; 
+             padding: 15px 30px; 
+             }
+        section {
+             max-width: 1100px;
+             margin: 40px auto;
+             background: gray; 
+             padding: 30px; 
+             border-radius: 8px; 
+             box-shadow: 0 2px 8px rgba(0,0,0,0.07); 
+            }
+        .about-img {
+             float: right;
+             width: 180px;
+             border-radius: 8px; 
+             margin-left: 20px;
+             }
+        .services { 
+            display: flex;
+            gap: 20px;
+            flex-wrap: wrap; 
+            justify-content: center; 
+           }
+        .service-card {
+             background: #f1f1f1; 
+             padding: 20px;
+             border-radius: 8px;
+             flex: 1 1 200px; 
+             text-align: center;
+             box-shadow: 0 1px 4px rgba(0,0,0,0.05);
+             }
+        .service-card i {
+             font-size: 2rem; 
+             margin-bottom: 10px; 
+             color: #e63946; }
+        .cars-grid { 
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 20px;
+         }
+        .car-card { 
+            background: #f1f1f1;
+            border-radius: 8px;
+            padding: 15px;
+            text-align: center;
+            box-shadow: 0 1px 4px rgba(0,0,0,0.05);
+         }
+        .car-card img {
+            width: 100%;
+            height: 250px;
+            object-fit: cover;
+            border-radius: 6px; 
+            }
+        .car-card h3 { 
+            margin: 10px 0 5px 0;
+         }
+        .car-card p {
+             margin: 5px 0;
+             }
+        .car-card .cta-btn {
+             margin-top: 10px; 
+            }
+        .testimonials {
+             display: flex;
+             gap: 20px; 
+             flex-wrap: wrap; 
+            }
+        .testimonial { 
+            background: #f3e5ab; 
+            border-radius: 8px; 
+            padding: 20px;
+            flex: 1 1 250px; 
+            box-shadow: 0 1px 4px rgba(0,0,0,0.05); 
+            font-style: italic; 
+        }
+        .contact-form { 
+            display: flex; 
+            flex-direction: column; 
+            gap: 20px;
+            max-width: 400px;
+            margin-bottom: 30px;
+          }
+        .contact-form input, .contact-form textarea {
+             padding: 20px; 
+             border-radius: 20px; 
+             border: 4px solid #ccc;
+             }
+        .contact-form button { 
+            background: #e63946;
+            color: #fff; 
+            border: none;
+            padding: 10px;
+            border-radius: 4px; 
+            cursor: pointer;
+            font-weight: bold;
+         }
+        .contact-info {
+             margin-bottom: 20px;
+             }
+        .footer {
+             background: #222; 
+             color: #fff;
+             padding: 30px 0; 
+             text-align: center;
+             }
+        .footer-links, .footer-social { 
+            margin: 10px 0;
+         }
+        .footer-links a {
+             color: #fff; 
+             margin: 0 10px;
+             text-decoration: none;
+             }
+        .footer-social a { 
+            color: #fff;
+            margin: 0 8px;
+            font-size: 1.3rem; 
+        }
+        @media (max-width: 700px) { .services, .testimonials { flex-direction: column; } .cars-grid { grid-template-columns: 1fr; } }
+        @media (max-width: 900px) {
+            .navbar {
+                flex-direction: column;
+                align-items: flex-start;
+                padding: 0 20px;
+            }
+            .logo {
+                font-size: 1.5rem;
+                margin-bottom: 10px;
+            }
+            nav {
+                width: 100%;
+                display: flex;
+                flex-wrap: wrap;
+                justify-content: flex-start;
+            }
+            nav a {
+                margin: 5px 10px;
+                font-size: 1rem;
+            }
+            .cta-btn {
+                margin: 10px 0 0 0;
+                width: 100%;
+                text-align: center;
+            }
+            .hero {
+                padding: 60px 10px 40px 10px;
+            }
+            .hero h1 {
+                font-size: 2rem;
+            }
+            .hero p {
+                font-size: 1rem;
+            }
+            section {
+                max-width: 98vw;
+                margin: 20px auto;
+                padding: 15px;
+            }
+            .about-img {
+                float: none;
+                display: block;
+                margin: 0 auto 15px auto;
+                width: 100%;
+                max-width: 220px;
+            }
+            .services {
+                flex-direction: column;
+                gap: 10px;
+            }
+            .service-card {
+                padding: 15px;
+            }
+            .cars-grid {
+                grid-template-columns: 1fr;
+                gap: 10px;
+            }
+            .car-card img {
+                height: 160px;
+            }
+            .testimonials {
+                flex-direction: column;
+                gap: 10px;
+            }
+            .testimonial {
+                padding: 15px;
+            }
+            .contact-form {
+                max-width: 98vw;
+                gap: 10px;
+            }
+            .contact-form input, .contact-form textarea {
+                padding: 10px;
+                border-radius: 8px;
+            }
+            .footer {
+                padding: 20px 0;
+            }
+            .footer-links, .footer-social {
+                flex-direction: column;
+                margin: 5px 0;
+            }
+            .footer-links a {
+                margin: 5px 0;
+                display: block;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header / Navbar -->
+    <header>
+        <div class="navbar">
+            <div class="logo">FEMIZOEXCEL</div>
+            <nav>
+                <a href="#home">Home</a>
+                <a href="#about">About</a>
+                <a href="#services">Services</a>
+                <a href="#cars">Cars for Sale</a>
+                <a href="#contact">Contact</a>
+            </nav>
+            <a href="https://wa.me/07069771360" class="cta-btn">Contact us on Whatsapp</a>
+        </div>
+    </header>
+    <!-- Hero Section -->
+    <section class="hero" id="home">
+        <h1>Reliable Cars, Trusted Service</h1>
+        <p>Your destination for quality vehicles and exceptional service.</p>
+        <a href="#cars" class="cta-btn">Browse Cars</a>
+    </section>
+    <!-- About Section -->
+    <section id="about">
+        <h2>About Us</h2>
+        <img src="/resources/IMG-20250827-WA0001.jpg" alt="Showroom" class="about-img">
+        <p> FEMIZOEXCEL Global Ventures was founded on a simple principle: to provide high-quality, reliable, and affordable vehicles to our community. What began with a passion for restoring imported cars has grown into a full-service dealership offering a wide range of new and pre-owned vehicles.
+
+        Our mission is to deliver exceptional value and service with every sale. We understand that buying a car is a significant investment, and we are committed to ensuring a smooth and trustworthy experience from start to finish. At FEMIZOEXCEL Global Ventures, you can be confident you're getting a quality vehicle at a fair price.</p>
+    <!-- Services Section -->
+    <section id="services">
+        <h2>Our Services</h2>
+        <div class="services">
+            <div class="service-card">
+                <i>🚗</i>
+                <h3>Car Sales</h3>
+                <p>New and used cars at competitive and affordable prices.</p>
+            </div>
+            <div class="service-card">
+                <i>🔑</i>
+                <h3>Car Rentals</h3>
+                <p>Flexible rental options for your every need.</p>
+            </div>
+            <div class="service-card">
+                <i>🛠️</i>
+                <h3>Repairs & Maintenance</h3>
+                <p>Expert service to keep your car running smoothly.</p>
+            </div>
+            <div class="service-card">
+                <i>⚙️</i>
+                <h3>Spare Parts</h3>
+                <p>Quality parts for all major car brands.</p>
+            </div>
+        </div>
+    </section>
+    <!-- Cars for Sale Section -->
+    <section id="cars">
+        <h2>Cars for Sale</h2>
+        <div class="cars-grid">
+            <div class="car-card">
+                <img src="/resources/18320924_screenshot20240424132939_jpeg08c1d8fd938faadb0be7f7994e7b394e.jpeg" alt="Toyota Venza">
+                <h3>Toyota Venza</h3>
+                <p>Price: ₦ 30,000,000</p>
+                <p>Automatic | 2021</p>
+                <button class="cta-btn">Contact for details</button>
+            </div>
+            <div class="car-card">
+                <img src="/resources/18450464_img0275_jpeg_jpeg695bafb2cdb753f8cc9cbd8069199619.jpeg" alt="Mercedes-Benz GLC-Class">
+                <h3>Mercedes-Benz GLC-Class SUV</h3>
+                <p>Price: ₦ 59,000,000</p>
+                <p>Automatic | 2017</p>
+                <button class="cta-btn">Contact for details</button>
+            </div>
+            <div class="car-card">
+                <img src="/resources/4255324_bestcarsinnigeria_jpegc031e33df9601ff431ec2deb41693042.jpeg" alt="Toyota Camry">
+                <h3>Toyota Camry</h3>
+                <p>Price: ₦ 11,500,000</p>
+                <p>Automatic | 2007 </p>
+                <button class="cta-btn">Contact for details</button>
+            </div>
+            <div class="car-card">
+                <img src="/resources/11042127_202001042050548434_jpeg7856ee27eea802b039be7155423edd2d.jpeg" alt="Lexus IS sedan">
+                <h3>Lexus IS XE20</h3>
+                <p>Price: ₦ 40,000,000</p>
+                <p>Automatic | 2018 </p>
+                <button class="cta-btn">Contact for details</button>
+            </div>
+            <div class="car-card">
+                <img src="/resources/efip4HFz9yDTz1bIQCDIgdYtsHMLZkj9Nb0nPyhjx4XdMKOQtM.jpeg" alt="Rav4">
+                <h3>Toyota RAV4</h3>
+                <p>Price: ₦ 51,500,000</p>
+                <p>Automatic | 2018 </p>
+                <button class="cta-btn">Contact for details</button>
+            </div>
+            <div class="car-card">
+                <img src="/resources/OIP.webp" alt="Lexus">
+                <h3>Lexus RX350</h3>
+                <p>Price: ₦ 70,000,000</p>
+                <p>Automatic | 2022 </p>
+                <button class="cta-btn">Contact for details</button>
+            </div>
+            <div class="car-card">
+                <img src="/resources/R.jpeg" alt="Toyota Land Cruiser Prado">
+                <h3>Toyota Land Cruiser Prado J150</h3>
+                <p>Price: ₦ 41,850,000</p>
+                <p>Manual | 2009 </p>
+                <button class="cta-btn">Contact for details</button>
+            </div>
+            <div class="car-card">
+                <img src="/resources/menawarkan-wisata-alam.jpg" alt="Toyota Fortuner SUVs">
+                <h3>Toyota Fortuner SUVs</h3>
+                <p>Price: ₦ 50,000,000</p>
+                <p>Automatic | 2015 </p>
+                <button class="cta-btn">Contact for details</button>
+            </div>
+            <div class="car-card">
+                <img src="/resources/Tokunbocars_1_1454706940.jpg" alt="Honda Pilot">
+                <h3>Honda Pilot</h3>
+                <p>Price: ₦ 4,350,000</p>
+                <p>Automatic | 2003-2008 </p>
+                <button class="cta-btn">Contact for details</button>
+            </div>
+        </div>
+    </section>
+    <!-- Testimonials Section -->
+    <section id="testimonials">
+        <h2>Customer Reviews</h2>
+        <div class="testimonials">
+            <div class="testimonial">
+                "Great service and honest advice. I love my new car!"<br>
+                <strong>- Jane D.</strong>
+            </div>
+            <div class="testimonial">
+                "Affordable prices and friendly staff. Highly recommend!"<br>
+                <strong>- Mike S.</strong>
+            </div>
+            <div class="testimonial">
+                "Offers great cars with affordable prices!"<br>
+                <strong>- Samuel O.</strong>
+            </div>
+        </div>
+    </section>
+    <!-- Contact Section -->
+    <section id="contact">
+        <h2>Contact Us</h2>
+        <div class="contact-info">
+            <p><strong>Phone:</strong> 07069771360</p>
+            <p><strong>Email:</strong> fellyomo@gmail.com</p>
+            <p><strong>WhatsApp:</strong> +2347069771360</p>
+            <p><strong>Business Hours:</strong> Mon-Sat 9am-7pm</p>
+        </div>
+        <form class="contact-form">
+            <input type="text" placeholder="Name" required>
+            <input type="email" placeholder="Email" required>
+            <textarea rows="4" placeholder="Message" required></textarea>
+            <button type="submit">Send Message</button>
+        </form>
+    <!-- Google Maps Embed for Festac Town, Lagos -->
+    <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3964.3734547428658!2d3.274340075097538!3d6.474291193517503!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x103b88b7aac7c7b9%3A0xc5f6c241b310e50!2s5th%20Avenue%2C%20D1%20Cl%2C%20Festac%20Town%2C%20Festac%201%20102102%2C%20Lagos!5e0!3m2!1sen!2sng!4v1756210735295!5m2!1sen!2sng" referrerpolicy="no-referrer-when-downgrade" width="100%" height="200" style="border:0; border-radius:8px; margin-top:20px;" allowfullscreen="" loading="lazy"></iframe>
+    </section>
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="footer-links">
+            <a href="#home">Home</a>
+            <a href="#about">About</a>
+            <a href="#services">Services</a>
+            <a href="#cars">Cars</a>
+            <a href="#contact">Contact</a>
+        </div>
+        <div class="footer-social">
+            <a href="https://wa.me/07069771360">Contact Us on Whatsapp<span>📘</span></a>
+            <a href="https://www.instagram.com/femizoexcelglobal">Contact Us on Instagram<span>📸</span></a>
+            <a href="https://mail.google.com/mail/u/fellyomo@gmail.com">Contact Us via E-mail<span>💬</span></a>
+        </div>
+        <p>&copy; 2025 FEMIZOEXCEL Global Ventures. All rights reserved.</p>
+    </footer>
+</body>
+</html>
