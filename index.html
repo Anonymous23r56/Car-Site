@@ -21,9 +21,10 @@
             background: #f7f7f7; 
         }
         nav a:hover {
-            color: #e63946;
+            color: ;
             text-decoration: underline;
             transition: color 0.2s;
+            text-decoration: none;
         }
         .cta-btn:hover, .contact-form button:hover {
             background: #b71c1c;
@@ -52,7 +53,84 @@
             z-index: 1000;
             background: hsl(0, 0%, 13%);
             box-shadow: 0 2px 8px rgba(0,0,0,0.07);
-        }
+
+            }
+            .navbar nav {
+                display: flex;
+                align-items: center;
+                gap: 0;
+            }
+            .navbar .cta-btn.whatsapp-btn {
+                margin-left: 15px;
+                background: #e63946;
+                color: #fff;
+                border-radius: 20px;
+                padding: 8px 18px;
+                font-weight: bold;
+                box-shadow: 0 2px 8px rgba(37,211,102,0.12);
+            }
+            .hamburger {
+                display: none;
+                background: none;
+                border: none;
+                cursor: pointer;
+                padding: 8px;
+                margin-left: 10px;
+            }
+            .hamburger-icon {
+                display: block;
+                width: 28px;
+                height: 3px;
+                background: #fff;
+                position: relative;
+            }
+            .hamburger-icon::before,
+            .hamburger-icon::after {
+                content: '';
+                display: block;
+                width: 28px;
+                height: 3px;
+                background: #fff;
+                position: absolute;
+                left: 0;
+            }
+            .hamburger-icon::before {
+                top: -8px;
+            }
+            .hamburger-icon::after {
+                top: 8px;
+            }
+            @media (max-width: 900px) {
+                .navbar nav {
+                    display: none;
+                    flex-direction: column;
+                    position: absolute;
+                    top: 60px;
+                    left: 0;
+                    width: 100%;
+                    background: rgba(30,30,30,0.98);
+                    box-shadow: 0 4px 16px rgba(0,0,0,0.12);
+                    border-radius: 0 0 12px 12px;
+                    padding: 20px 0 10px 0;
+                    z-index: 999;
+                }
+                .navbar nav.open {
+                    display: flex;
+                }
+                .navbar .logo {
+                    font-size: 1.5rem;
+                }
+                .hamburger {
+                    display: block;
+                }
+            }
+            @media (max-width: 900px) {
+                .navbar {
+                    flex-direction: row;
+                    align-items: center;
+                    padding: 0 20px;
+                }
+            }
         .logo {
              font-size: 2rem;
              font-weight: bold; 
@@ -66,7 +144,7 @@
             text-decoration: none;
             }
 
-            .service-card:hover {
+         .service-card:hover {
             box-shadow: 0 4px 16px rgba(230,57,70,0.15);
             transform: translateY(-4px) scale(1.03);
             transition: box-shadow 0.2s, transform 0.2s;
@@ -210,6 +288,7 @@
              color: #fff;
              padding: 30px 0; 
              text-align: center;
+             font-size: medium;
              }
         .footer-links, .footer-social { 
             margin: 10px 0;
@@ -222,7 +301,7 @@
         .footer-social a { 
             color: #fff;
             margin: 0 8px;
-            font-size: 1.3rem; 
+            font-size:medium; 
         }
         @media (max-width: 700px) { .services, .testimonials { flex-direction: column; } .cars-grid { grid-template-columns: 1fr; } }
         @media (max-width: 900px) {
@@ -301,7 +380,7 @@
                 border-radius: 8px;
             }
             .footer {
-                padding: 20px 0;
+                padding: 10px 0;
             }
             .footer-links, .footer-social {
                 flex-direction: column;
@@ -318,17 +397,22 @@
     <!-- Header / Navbar -->
     <header>
         <div class="navbar">
-            <div class="logo">FEMIZOEXCEL</div>
-            <nav>
-                <a href="#home">Home</a>
-                <a href="#about">About</a>
-                <a href="#services">Services</a>
-                <a href="#cars">Cars for Sale</a>
-                <a href="#contact">Contact</a>
-            </nav>
-            <a href="https://wa.me/07069771360" class="cta-btn">Contact us on Whatsapp</a>
-        </div>
+                <div class="logo">FEMIZOEXCEL</div>
+                <button class="hamburger" aria-label="Open menu" onclick="document.querySelector('.navbar nav').classList.toggle('open')">
+                    <span class="hamburger-icon"></span>
+                </button>
+                <nav>
+                    <a href="#home">Home</a>
+                    <a href="#about">About</a>
+                    <a href="#services">Services</a>
+                    <a href="#cars">Cars for Sale</a>
+                    <a href="#contact">Contact</a>
+                    <a href="https://wa.me/07069771360" class="cta-btn">Contact us on Whatsapp</a>
+                </nav>
+            </div>
     </header>
+
+
     <!-- Hero Section -->
     <section class="hero" id="home">
         <h1>Reliable Cars, Trusted Service</h1>
@@ -358,15 +442,8 @@
             </div>
             <div class="service-card">
                 <i>🛠️</i>
-                <h3>Repairs & Maintenance</h3>
-                <p>Expert service to keep your car running smoothly.</p>
-            </div>
-            <div class="service-card">
-                <i>⚙️</i>
-                <h3>Spare Parts</h3>
-                <p>Quality parts for all major car brands.</p>
-            </div>
-        </div>
+                <h3>Maintenance & Repairs</h3>
+                <p>Comprehensive servicing to keep your vehicle in top condition.</p>
     </section>
     <!-- Cars for Sale Section -->
     <section id="cars">
@@ -475,14 +552,7 @@
     </section>
     <!-- Footer -->
     <footer class="footer">
-        <div class="footer-links">
-            <a href="#home">Home</a>
-            <a href="#about">About</a>
-            <a href="#services">Services</a>
-            <a href="#cars">Cars</a>
-            <a href="#contact">Contact</a>
-        </div>
-        <div class="footer-social">
+         <div class="footer-social">
             <a href="https://wa.me/07069771360">Contact Us on Whatsapp<span>📘</span></a>
             <a href="https://www.instagram.com/femizoexcelglobal">Contact Us on Instagram<span>📸</span></a>
             <a href="https://mail.google.com/mail/u/fellyomo@gmail.com">Contact Us via E-mail<span>💬</span></a>
@@ -491,3 +561,93 @@
     </footer>
 </body>
 </html>
+<style>
+    .navbar {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        max-width: 1100px;
+        margin: 0 auto;
+        position: sticky;
+        top: 0;
+        z-index: 1000;
+        background: hsl(0, 0%, 13%);
+        box-shadow: 0 2px 8px rgba(0,0,0,0.07);
+    }
+    .navbar nav {
+        display: flex;
+        align-items: center;
+        gap: 0;
+    }
+    .navbar .cta-btn.whatsapp-btn {
+        margin-left: 15px;
+        background: #d38525;
+        color: #fff;
+        border-radius: 20px;
+        padding: 8px 18px;
+        font-weight: bold;
+        box-shadow: 0 2px 8px rgba(37,211,102,0.12);
+    }
+    .hamburger {
+        display: none;
+        background: none;
+        border: none;
+        cursor: pointer;
+        padding: 8px;
+        margin-left: 10px;
+    }
+    .hamburger-icon {
+        display: block;
+        width: 28px;
+        height: 3px;
+        background: #fff;
+        position: relative;
+    }
+    .hamburger-icon::before,
+    .hamburger-icon::after {
+        content: '';
+        display: block;
+        width: 28px;
+        height: 3px;
+        background: #fff;
+        position: absolute;
+        left: 0;
+    }
+    .hamburger-icon::before {
+        top: -8px;
+    }
+    .hamburger-icon::after {
+        top: 8px;
+    }
+    @media (max-width: 900px) {
+        .navbar nav {
+            display: none;
+            flex-direction: column;
+            position: absolute;
+            top: 60px;
+            left: 0;
+            width: 100%;
+            background: rgba(30,30,30,0.98);
+            box-shadow: 0 4px 16px rgba(0,0,0,0.12);
+            border-radius: 0 0 12px 12px;
+            padding: 20px 0 10px 0;
+            z-index: 999;
+        }
+        .navbar nav.open {
+            display: flex;
+        }
+        .navbar .logo {
+            font-size: 1.5rem;
+        }
+        .hamburger {
+            display: block;
+        }
+    }
+    @media (max-width: 900px) {
+        .navbar {
+            flex-direction: row;
+            align-items: center;
+            padding: 0 20px;
+        }
+    }
+</style>
